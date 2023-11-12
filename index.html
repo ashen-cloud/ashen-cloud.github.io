@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danylo Skorychenko</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="assets/img1.jpg" alt="Your Image" class="profile-image">
+            <p>Your description here.</p>
+            <!-- Other links -->
+            <nav>
+                <ul id="postList">
+                    <!-- List of posts will be added here -->
+                </ul>
+            </nav>
+        </aside>
+
+        <section id="blogPosts" class="main-content">
+            <!-- Blog posts will be added here -->
+        </section>
+    </div>
+</body>
+
+<script>
+    const posts = [
+        `<p1>Test content</p1> <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        `,
+        `<p1>Test content</p1> <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        new line of test content <br>\
+        `
+    ]
+
+    const postEls = []
+    const tabEls = []
+
+    posts.forEach((post, i) => {
+        const ptag = post.split('<br>')[0]
+        const title = ptag.slice(ptag.indexOf('>') + 1, ptag.lastIndexOf('<'))
+
+        const postElement = document.createElement("article")
+        
+        const postId = 'post' + i
+
+        postElement.id = postId
+        postElement.innerHTML = post
+
+        document.getElementById('blogPosts').appendChild(postElement)
+        postEls.push(postElement)
+
+        const navItem = document.createElement("li")
+        if (i === 0) {
+            navItem.classList.add('highlighted')
+        }
+        navItem.innerHTML = `<a href="#${postId}">${title}</a>`
+        document.getElementById('postList').appendChild(navItem)
+        tabEls.push(navItem)
+    })
+
+    const postsEl = document.getElementById("blogPosts")
+
+    function highlightTab() {
+        const posts = postEls
+        const tabs = tabEls
+        const scrollPosition = postsEl.scrollTop
+
+        let selectedTabIndex = -1
+
+        posts.forEach((post, index) => {
+            const postTop = post.offsetTop
+            const postHeight = post.offsetHeight
+            
+            if (scrollPosition >= postTop && scrollPosition < postTop + postHeight) {
+                selectedTabIndex = index
+            }
+        })
+
+        tabs.forEach((tab, index) => {
+            if (index === selectedTabIndex) {
+                tab.classList.add('highlighted')
+            } else {
+                tab.classList.remove('highlighted')
+            }
+        })
+    }
+
+    postsEl.addEventListener('scroll', highlightTab)
+
+</script>
+
+</html>
+

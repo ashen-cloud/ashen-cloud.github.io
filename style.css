@@ -1,0 +1,40 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Prevent scrolling on the entire page */
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.sidebar {
+    position: fixed; /* Keeps the sidebar in place */
+    width: 20%;
+    height: 100%; /* Make sidebar full height */
+    background-color: #f4f4f4;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allows the sidebar to scroll independently if content overflows */
+}
+
+.main-content {
+    flex-grow: 1;
+    margin-left: 20%; /* Same as the width of the sidebar */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allows independent scrolling */
+    height: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.highlighted {
+    background-color: #1a4386;
+}
