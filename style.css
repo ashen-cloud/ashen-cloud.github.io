@@ -3,31 +3,71 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    overflow: hidden; /* Prevent scrolling on the entire page */
+    background-color: #0A0E14; /* Ayu Dark background color */
+    color: #B3B1AD; /* Lighter text color for readability */
+    overflow: hidden;
 }
+
+.sidebar-line {
+    border: none;
+    border-top: 1px solid #ccc; /* Adjust color as needed */
+    margin: 0; /* Reset margins */
+}
+
+.sidebar-text {
+    text-align: center;
+    /* Additional styling for your text */
+}
+
+.sidebar-bottom-content {
+    position: absolute;
+    bottom: 0;
+    width: 100%; /* Full width */
+    /* Adjust padding if needed */
+    padding: 10px 0;
+}
+
+.sidebar {
+    position: relative; /* Needed for absolute positioning inside */
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    background-color: #12171D; /* Dark sidebar background */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.postText {
+    font-size: 30px;
+    color: #A6ACCD; /* Slightly lighter text color for content */
+}
+
+.postList {
+    font-size: 35px;
+    color: #B3B1AD; /* Muted light text color for content */
+}
+
+.description {
+    font-size: 30px;
+    color: #A6ACCD; /* Slightly lighter text color for content */
+}
+
 
 .container {
     display: flex;
     height: 100%;
 }
 
-.sidebar {
-    position: fixed; /* Keeps the sidebar in place */
-    width: 20%;
-    height: 100%; /* Make sidebar full height */
-    background-color: #f4f4f4;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto; /* Allows the sidebar to scroll independently if content overflows */
-}
-
 .main-content {
     flex-grow: 1;
-    margin-left: 20%; /* Same as the width of the sidebar */
+    margin-left: 20%;
     padding: 20px;
     box-sizing: border-box;
-    overflow-y: auto; /* Allows independent scrolling */
+    overflow-y: auto;
     height: 100%;
+    background-color: #0A0E14; /* Consistent background with body */
 }
 
 nav ul {
@@ -35,6 +75,32 @@ nav ul {
     padding: 0;
 }
 
+p1 {
+    font-size: 80px;
+    font-weight: bold;
+    color: #FFCC66; /* Ayu Dark gold color for titles */
+}
+
 .highlighted {
-    background-color: #1a4386;
+    border-left: 4px solid #FFCC66; /* Ayu Dark gold for highlight */
+    padding-left: 16px;
+    background-color: transparent;
+    color: #B3B1AD; /* Consistent text color for readability */
+}
+
+.highlighted a {
+    color: #FFCC66; /* Gold color for links inside highlighted items */
+}
+
+.highlighted a:hover {
+    color: #FFB454; /* Orange color for hovered links inside highlighted items */
+}
+
+a {
+    color: #39BAE6; /* Ayu Dark teal for links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #FFB454; /* Ayu Dark orange for hovered links */
 }
