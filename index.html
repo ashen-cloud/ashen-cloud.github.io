@@ -11,16 +11,13 @@
     <div class="container">
         <aside class="sidebar">
             <img src="assets/cloud.jpeg" alt="Your Image" class="profile-image">
-            <br>
-            <br>
             <div class="name1">&nbsp;&nbsp;&nbsp;Danylo&nbsp;Skorychenko</div>
-            <br>
             <hr>
             <p class="description">
                 Software Engineer,<br>
                 Ethical Hacker.<br>
                 <br>
-                Hire me: <a href="mailto:
+                Hire me: <a href="mailto:your-email@example.com">your-email@example.com</a>
             </p>
             <hr>
             <!-- Other links -->
@@ -37,76 +34,66 @@
 
         <section id="blogPosts" class="main-content">
             <!-- Blog posts will be added here -->
+            <div id="infinite-scroll-placeholder"></div>
         </section>
     </div>
-</body>
 
-<script>
-    const posts = [
-        `<p1>Test content</p1> <br>\
-        <div class='postText'>
-            new line of test content <br>
-            new line of test content <br>
-        </div>\
-        `,
-    ]
+    <script>
+        const postList = document.getElementById('postList')
+        const blogPosts = document.getElementById('blogPosts')
+        const postEls = []
+        const tabEls = []
+        let currentPage = 1
 
-    const postEls = []
-    const tabEls = []
+        async function getPosts() {
+            let i = 1
+            while (true) {
+                try {
+                    const html = await (await fetch(`post${i}.html`)).text()
+                    const div = document.createElement('div')
+                    div.innerHTML = html
+                    div.id = `post${i}`
+                    blogPosts.appendChild(div)
+                    const title = html.split('>')[1].split('<')[0] || 'No title'
+                    const navItem = document.createElement("li")
+                    
+                    navItem.innerHTML = `<a href="#post${i}">${title}</a>`
+                    
+                    postList.appendChild(navItem)
+                    postEls.push(div)
+                    tabEls.push(navItem)
 
-    posts.forEach((post, i) => {
-        const ptag = post.split('<br>')[0]
-        const title = ptag.slice(ptag.indexOf('>') + 1, ptag.lastIndexOf('<'))
-
-        const postElement = document.createElement("article")
-        
-        const postId = 'post' + i
-
-        postElement.id = postId
-        postElement.innerHTML = post
-
-        document.getElementById('blogPosts').appendChild(postElement)
-        postEls.push(postElement)
-
-        const navItem = document.createElement("li")
-        if (i === 0) {
-            navItem.classList.add('highlighted')
+                    i++
+                } catch (_) {
+                    break
+                }
+            }
         }
-        navItem.innerHTML = `<a href="#${postId}">${title}</a>`
-        document.getElementById('postList').appendChild(navItem)
-        tabEls.push(navItem)
-    })
 
-    const postsEl = document.getElementById("blogPosts")
+        getPosts()
 
-    function highlightTab() {
-        const posts = postEls
-        const tabs = tabEls
-        const scrollPosition = postsEl.scrollTop
+        function highlightTab() {
+            const scrollPosition = blogPosts.scrollTop
+            let selectedTabIndex = -1
 
-        let selectedTabIndex = -1
+            postEls.forEach((post, index) => {
+                const postTop = post.offsetTop
+                const postHeight = post.offsetHeight
+                
+                if (scrollPosition >= postTop && scrollPosition < postTop + postHeight) {
+                    selectedTabIndex = index
+                }
+            })
 
-        posts.forEach((post, index) => {
-            const postTop = post.offsetTop
-            const postHeight = post.offsetHeight
-            
-            if (scrollPosition >= postTop && scrollPosition < postTop + postHeight) {
-                selectedTabIndex = index
-            }
-        })
+            tabEls.forEach((tab, index) => {
+                if (index === selectedTabIndex) {
+                    tab.classList.add('highlighted')
+                } else {
+                    tab.classList.remove('highlighted')
+                }
+            })
+        }
 
-        tabs.forEach((tab, index) => {
-            if (index === selectedTabIndex) {
-                tab.classList.add('highlighted')
-            } else {
-                tab.classList.remove('highlighted')
-            }
-        })
-    }
-
-    postsEl.addEventListener('scroll', highlightTab)
-
-</script>
-
+        blogPosts.addEventListener('scroll', highlightTab)
+    </script>
 </html>
-
