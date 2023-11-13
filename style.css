@@ -28,7 +28,7 @@ html, body {
 .sidebar {
     position: relative; /* Needed for absolute positioning inside */
     position: fixed;
-    width: 400px;
+    width: 500px;
     height: 100%;
     background-color: #12171D; /* Dark sidebar background */
     padding: 20px;
@@ -39,7 +39,7 @@ html, body {
 
 .main-content {
     flex-grow: 1;
-    margin-left: 400px;
+    margin-left: 500px;
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
@@ -48,29 +48,29 @@ html, body {
 }
 
 .profile-image {
-    margin-left: 30px;
+    margin-left: 80px;
     width: 300px;
     height: 300px;
 }
 
 .postText {
-    font-size: 16px;
+    font-size: 22px;
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
 .postList {
-    font-size: 22px;
+    font-size: 25px;
     color: #B3B1AD; /* Muted light text color for content */
 }
 
 .description {
-    font-size: 16px;
+    font-size: 22px;
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
 .name1 {
     margin-left: 15px;
-    font-size: 30px;
+    font-size: 40px;
     color: #ae5919; /* Slightly lighter text color for content */
 }
 
@@ -85,7 +85,7 @@ nav ul {
 }
 
 p1 {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     color: #FFCC66; /* Ayu Dark gold color for titles */
 }
