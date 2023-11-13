@@ -54,7 +54,7 @@ html, body {
 }
 
 .postText {
-    font-size: 22px;
+    font-size: 26px;
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
@@ -64,7 +64,7 @@ html, body {
 }
 
 .description {
-    font-size: 22px;
+    font-size: 24px;
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
