@@ -16,14 +16,12 @@ html, body {
 
 .sidebar-text {
     text-align: center;
-    /* Additional styling for your text */
 }
 
 .sidebar-bottom-content {
     position: absolute;
     bottom: 0;
     width: 100%; /* Full width */
-    /* Adjust padding if needed */
     padding: 10px 0;
 }
 
@@ -54,6 +52,10 @@ html, body {
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
+.name1 {
+    font-size: 40px;
+    color: #ae5919; /* Slightly lighter text color for content */
+}
 
 .container {
     display: flex;
