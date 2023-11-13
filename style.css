@@ -38,22 +38,22 @@ html, body {
 }
 
 .postText {
-    font-size: 30px;
+    font-size: 12px;
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
 .postList {
-    font-size: 35px;
+    font-size: 18px;
     color: #B3B1AD; /* Muted light text color for content */
 }
 
 .description {
-    font-size: 30px;
+    font-size: 14px;
     color: #A6ACCD; /* Slightly lighter text color for content */
 }
 
 .name1 {
-    font-size: 40px;
+    font-size: 20px;
     color: #ae5919; /* Slightly lighter text color for content */
 }
 
@@ -78,7 +78,7 @@ nav ul {
 }
 
 p1 {
-    font-size: 80px;
+    font-size: 30px;
     font-weight: bold;
     color: #FFCC66; /* Ayu Dark gold color for titles */
 }
@@ -105,4 +105,29 @@ a {
 
 a:hover {
     color: #FFB454; /* Ayu Dark orange for hovered links */
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Full width on small screens */
+        height: auto; /* Adjust height */
+    }
+
+    .container {
+        flex-direction: column; /* Stack elements vertically on small screens */
+    }
+
+    .main-content {
+        margin-left: 0; /* Remove margin */
+    }
+
+    .name1, .description, .postList {
+        font-size: 1.5rem; /* Smaller font size on small screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .name1, .description, .postList {
+        font-size: 1.2rem; /* Even smaller font size on very small screens */
+    }
 }
