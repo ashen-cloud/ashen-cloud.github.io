@@ -90,6 +90,12 @@ p1 {
     color: #FFCC66; /* Ayu Dark gold color for titles */
 }
 
+p2 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #FFCC66; /* Ayu Dark gold color for titles */
+}
+
 .highlighted {
     border-left: 4px solid #FFCC66; /* Ayu Dark gold for highlight */
     padding-left: 16px;

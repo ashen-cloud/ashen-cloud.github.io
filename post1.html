@@ -1,5 +1,115 @@
-<p1>Test content1</p1>
+<p1>TODO CREATE NAME</p1>
+<br>
+<br>
 <br>
 <div class='postText'>
-    new line of test content <br>
+    Imagine I came to you and said that I know everything about you. What interests you have, what porn you watch, what you spend your money on, etc..<br>
+    If I tried to blackmail you with this information?<br>
+    "This guy is funny", you'd think.<br>
+    Now imagine if I were Google, saying this to you. Evokes slightly different feelings, right?<br>
+    That's because you potentially have only an abstract notion of what data collection, or even 'data' is, just like me from the past.<br>
+    Let's fix that.<br>
+    <br>
+    This article doesn't aim to be accurate, but it does aim to be useful.<br>
+    <br>
+
+    <p2>So what is 'data'?</p2><br><br>
+
+    When did you access the website? What pages did you access? When did you access those pages? How much time have you spent on them?<br>
+    <br>
+    Answers to those seemingly innocent questions allow mildly evil people to understand your interests and grab your attention, which enables them to advertise 'relevant' things to you.<br>
+    Just evil people can use that information to essentially doxx you.<br>
+    Very evil ones however can build an inescapable, invisible prison, where every action of yours would be known and you'd be judged for it.<br>
+    <br>
+    Contrary to popular belief the third hasn't happened yet, and we can keep it that way.<br>
+    <br>
+
+    <p3>Here, let's look at an example request for a tracking pixel:</p3><br>
+    <br>
+
+    Imagine you're casually browsing your favorite forum, clicking on threads, images, etc.. Every act of clicking loads a web page. The web page includes
+    an invisible image in an img tag.
+    <br>
+    This image's src points to a malicious server that logs the details of the request. A request like this one:
+    <br>
+
+    <pre><code>
+      GET /track.gif?user_id=123&amp;session=98&amp;thread=1337&amp;timestamp=1670001234 HTTP/1.1
+      Host: trackingserver.com
+      User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+      Referer: https://forum.com/thread/1337
+      Accept: image/webp,image/apng,image/*,*/*;q=0.8
+      Accept-Language: en-US,en;q=0.9
+      Cookie: track_id=abcd123
+    </pre></code>
+
+    This line containing GET parameters:
+    <pre><code>
+      user_id=123&amp;session=98&amp;thread=1337&amp;timestamp=1670001234
+    </pre></code>
+    <br>
+    This is 'data'. This is exactly what enables tracking. Imagine if somebody had a log of those things - your entire browsing history plus some data analytics?
+    <br>
+    Well, chances are, somebody already does. Huge, scary attack vector.
+    <br>
+    <br>
+
+    How would the hostile server look, anyways?<br>
+    <pre><code>
+      const express = require('express')
+      const app = express()
+      const PORT = 3000
+
+      app.get('/', (req, res) => { // our page with interesting content
+          res.send(`
+              &lt;html&gt;
+                  &lt;body&gt;
+                      &lt;h1&gt;Tracking pixel demo&lt;/h1&gt;
+                      &lt;img src="/track.gif" alt="tracking pixel" /&gt; // innocent-looking image tag
+                  &lt;/body&gt;
+              &lt;/html&gt;
+          `)
+      })
+
+      app.get('/track.gif', (req, res) => { // here we serve the malicious gif
+
+        doEvilThings(req.query) // req has user_id, session id, current page, thread id, time, etc..
+
+        // 1x1 pixel gif
+        const pixel = Buffer.from([
+            0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00,
+            0x01, 0x00, 0x80, 0xff, 0x00, 0xff, 0xff, 0xff,
+            0x00, 0x00, 0x00, 0x2c, 0x00, 0x00, 0x00, 0x00,
+            0x01, 0x00, 0x01, 0x00, 0x00, 0x02, 0x02, 0x44,
+            0x01, 0x00, 0x3b
+        ])
+
+        res.writeHead(200, { // metadata so that it's displayed
+            'Content-Type': 'image/gif',
+            'Content-Length': pixel.length
+        })
+
+        res.end(pixel) // send the thing.
+      })
+
+      app.listen(PORT, () => console.log(`Server running at http://127.0.0.1:${PORT}`))
+    </pre></code>
+
+    Obviously google's implementation is a little more sophisticated than this, but not by much.<br>
+    <br>
+    Easy and effective, right? Why not host this right now and include it on your website? Huh, you don't have a website?<br>
+    What about emails? They support html, and the img tag, yeah?<br>
+    That's exactly what pretty much every company does nowadays, and having 'Show images' enabled in the email client is privacy suicide.<br>
+
+    <br>
+
+    There's one more interesting line in the request above however:<br>
+    <pre><code>
+          Cookie: track_id=abcd123
+    </code></pre>
+
+    <br>
+    <br>
+    <p1>Cookies</p1>
+    
 </div>
