@@ -1,16 +1,18 @@
-<p1>TODO CREATE NAME</p1>
+<p1>2024 Web tracking 101</p1>
 <br>
 <br>
 <br>
 <div class='postText'>
-    Imagine I came to you and said that I know everything about you. What interests you have, what porn you watch, what you spend your money on, etc..<br>
-    If I tried to blackmail you with this information?<br>
-    "This guy is funny", you'd think.<br>
-    Now imagine if I were Google, saying this to you. Evokes slightly different feelings, right?<br>
-    That's because you potentially have only an abstract notion of what data collection, or even 'data' is, just like me from the past.<br>
-    Let's fix that.<br>
+    Just by visiting this page you command your cpu to run my code.<br>
+    If you thought my code was unsafe or posed danger - you'd not visit, right?<br>
+    But you're here, without knowing whether I'm a nice guy or not, because you trust that your browser's security measures would protect you.<br>
+    Now imagine if I also wrote your browser? And purposefully made it vulnerable to disclosing your private information? And would be able to collect and sell it? Or blackmail you?<br>
+    'Funny', you'd think.. But imagine now reading such a thing posted by Google? Hm?<br>
+    Obviously, it is posted by them, away from the public eye, somewhere on the internal papers. Not only posted, but successfully implemented.<br>
     <br>
-    This article doesn't aim to be accurate, but it does aim to be useful.<br>
+    Let's undo their hard work, shall we?<br>
+    <br>
+    This article doesn't aim to be accurate or complete, but it does aim to be useful.<br>
     <br>
 
     <p2>So what is 'data'?</p2><br><br>
@@ -107,9 +109,213 @@
     <pre><code>
           Cookie: track_id=abcd123
     </code></pre>
+    
+    Of course evil pixels aren't the only way to do evil things, why would they be?
 
     <br>
     <br>
-    <p1>Cookies</p1>
+    <p2>Cookies</p2>
+    <br>
+    <br>
     
+    Cookies do a lot of very useful things, like remembering your sessions so that you don't have to enter your password every 2 minutes,<br>
+    or storing your settings so that the website's light theme doesn't flashbang you on every page refresh.<br>
+    <br>
+
+    They essentially provide a way to persistently store client-side session data, which begs the question:<br>
+    What if they generate a universally unique id for every user, and then store that in a cookie?<br>
+    Harmless, until it's read by the same server across different websites with the intention of assembling the user's browsing history.<br>
+    <br>
+    'How though?'
+    <br>
+    <br>
+    Say, you're browsing this website, let's call it Website A:
+
+    <pre><code>
+      const express = require('express')
+      const app = express()
+      const PORT = 3000
+
+      app.get('/', (req, res) => {
+          res.send(`
+              &lt;html&gt;
+                  &lt;body&gt;
+                      &lt;h1&gt;This is Website A&lt;/h1&gt;
+                      &lt;script src="http://localhost:5000/set-cookie.js"&gt;&lt;/script&gt; // Note that it refers to a different port
+                  &lt;/body&gt;
+              &lt;/html&gt;
+          `)
+      })
+
+      app.listen(PORT, () => console.log(`Website A running at http://127.0.0.1:${PORT}`))
+    </pre></code>
+      
+    And this would be Website B, the malicious server:
+
+    <pre><code>
+      const express = require('express')
+      const app = express()
+      const PORT = 5000
+
+      app.get('/set-cookie.js', (req, res) => {
+          res.set('Content-Type', 'application/javascript')
+          res.send(`
+              document.cookie = "thirdPartyCookie=123; SameSite=None"
+              console.log("Third-party cookie set by Website B")
+          `)
+      })
+
+      app.listen(PORT, () => console.log(`Website B running at http://127.0.0.1:${PORT}`))
+    </pre></code>
+
+
+    Notice this line, specifically the SameSite=None attribute
+    <pre><code>
+      document.cookie = "thirdPartyCookie=123; SameSite=None"
+    </pre></code>
+
+    What this does, it makes the cookie available to the domains that didn't set it, i.e. it can be sent to any server ever.<br>
+    Luckily it's not 2008, and browsers have evolved to block such a thing, either through CORS policy, or with explicit anti-tracking cookie rules.
+    <br>
+    Sounds very reassuring, though guess what happens if the website calls the tracking api on the backend now instead of the frontend? Well, you get tracked.<br>
+    This requires more friction from the website and tracker devs to implement, but money wins, as per usual.<br>
+    <br>
+    And who suffers from that? Of course, the user. Did 'privacy' laws like GDPR improve actual user privacy? You can press F12, open cookies tab and see for yourself.<br>
+    They did successfully accomplish, however, making the web even more polluted, with the 'Cookie consent' questions/notifications. Another reason to use things like Brave that block them.<br>
+
+    <br>
+    <p2>Supercookies</p2>
+    <br>
+    <br>
+    
+    Normal cookies are kind of annoying when used maliciously, but at the very least they are easy to block or delete.<br>
+    Welcome 'Supercookies'. They are not really cookies, just some javascript that writes metadata to the headers/local storage/other different places.<br> 
+    <br> 
+
+    Let's look at this example request.
+
+    <pre><code>
+      HTTP/1.1 200 OK
+      Content-Type: image/jpeg
+      ETag: "a3d9-58ca7e4c"
+      Content-Length: 41401
+    </pre></code>
+    
+    The etag field is usually used for caching. Instead of sending, for example, an image multiple times, it's sent once, saved in browser cache (just files on the disk),<br>
+    and then the identifying etag is sent instead. Identifying, huh?<br>
+
+    <pre><code>
+      &lt;html&gt;
+        &lt;body&gt;
+          &lt;h1>Etag tracking demo&lt;/h1&gt;
+          &lt;img src="/track.gif" alt="tracking image"&gt;
+        &lt;/body&gt;
+      &lt;/html&gt;
+    </pre></code>
+
+    And our server:
+
+    <pre><code>
+      const express = require('express')
+      const app = express()
+      const PORT = 3000
+
+      app.get('/track.gif', (req, res) => { // This time the gif itself isn't malicious
+
+        let etag = req.header('If-None-Match') // If user already has an etag, it would be here
+
+        if (!etag) {
+          // This is the first time this user has visited, assign them a new etag
+          etag = '' + Math.random() // We are using a random number, but in the real world it would be some UUID
+        }
+
+        // 1x1 transparent gif, this time we don't care about displaying it
+        res.type('gif')
+        res.send(Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64')
+      })
+
+      app.listen(PORT, () => console.log(`Server running at http://127.0.0.1:${PORT}`))
+    </pre></code>
+
+    Looks pretty harmless, no? How exactly would this track somebody?<br>
+    As mentioned previously, the etagged content is cached, meaning stored in a file on the disk, which means it's implemented lower, closer to protocol-level.<br>
+    It'll be available for the server to read regardless of sessions or incognito mode. Some browsers (Brave) will automatically isolate/clear the cache, but it's safest to clear it manually. <br>
+
+    <br>
+    <br>
+
+    <p2>Fingerprinting</p2>
+    <br>
+    <br>
+
+    There are other ways to recognize somebody through sessions/incognito mode/vpns.<br>
+    
+    There's always something unique about your setup. Screen resolution? Browser/Os version? Extensions and their html byproducts even.<br>
+
+    <br>
+    Look at this:
+
+    <pre><code>
+      function generateFingerprint() {
+          const navigatorData = {
+              userAgent: navigator.userAgent,
+              language: navigator.language,
+              platform: navigator.platform,
+              deviceMemory: navigator.deviceMemory || 'unknown',
+              hardwareConcurrency: navigator.hardwareConcurrency,
+          }
+
+          const screenData = {
+              width: screen.width,
+              height: screen.height,
+              colorDepth: screen.colorDepth,
+              pixelDepth: screen.pixelDepth,
+          }
+
+          const json = JSON.stringify({ navigatorData, screenData })
+          return json
+      }
+  </pre></code>
+
+  <div id='fingerprint'></div>
+  <button style='margin-left:50px;font-size: 30px;' onclick='fingerprintAndShow()'>Fingerprint me!</button>
+
+  This would then be hashed and saved, and used to recognize you every time you visit.<br>
+  <br>
+  
+  It also can be done with a canvas:
+  
+  <pre><code>
+    function canvasFingerprint() {
+      const canvas = document.getElementById('canvasFingerprint')
+      const ctx = canvas.getContext('2d')
+      
+      // Random text (the exact appearance will be different on different machines)
+      ctx.textBaseline = "top"
+      ctx.font = "14px 'Arial'"
+      ctx.textBaseline = "alphabetic"
+      ctx.fillStyle = "#f60"
+      ctx.fillRect(125,1,62,20)
+      ctx.fillStyle = "#069"
+      ctx.fillText("CANVAS_FINGERPRINT_DEMO", 2, 15)
+      ctx.fillStyle = "rgba(102, 204, 0, 0.7)"
+      ctx.fillText("CANVAS_FINGERPRINT_DEMO", 4, 17)
+      
+      const dataURL = canvas.toDataURL()
+      const fp = dataURL.replace("data:image/png;base64,", "")
+      
+      return fp
+    }
+  </pre></code>
+
+  <canvas id="canvasFingerprint" style="display: none;"></canvas>
+  <div id='canvasFingerprintRes'></div>
+  <button style='margin-left:50px;font-size: 30px;' onclick='canvasFingerprintAndShow()'>Fingerprint me with canvas!</button>
+  <br>
+  <br>
+  The way this works is we draw random stuff on the canvas, and then save it as an image. An image can be represented as a base64 string.<br>
+  Since no machine/setup is the same, this long-ass string will be different (and most probably unique) for every user.<br>
+
 </div>
+
+      

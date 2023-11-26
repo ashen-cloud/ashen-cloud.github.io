@@ -102,4 +102,55 @@
 
         blogPosts.addEventListener('scroll', highlightTab)
     </script>
+
+    <script>
+        // TODO: this should be encapsulated in post1
+
+        function generateFingerprint() {
+            const navigatorData = {
+                userAgent: navigator.userAgent,
+                language: navigator.language,
+                platform: navigator.platform,
+                deviceMemory: navigator.deviceMemory || 'unknown',
+                hardwareConcurrency: navigator.hardwareConcurrency,
+            }
+
+            const screenData = {
+                width: screen.width,
+                height: screen.height,
+                colorDepth: screen.colorDepth,
+                pixelDepth: screen.pixelDepth,
+            }
+
+            const json = JSON.stringify({navigatorData, screenData})
+            return json
+        }
+
+        function fingerprintAndShow() {
+          const res = generateFingerprint()
+          document.getElementById('fingerprint').innerHTML = res
+        }
+
+        function canvasFingerprintAndShow() {
+          const canvas = document.getElementById('canvasFingerprint')
+          const ctx = canvas.getContext('2d')
+          
+          // Random text (the exact appearance will be different on different machines)
+          ctx.textBaseline = "top"
+          ctx.font = "14px 'Arial'"
+          ctx.textBaseline = "alphabetic"
+          ctx.fillStyle = "#f60"
+          ctx.fillRect(125,1,62,20)
+          ctx.fillStyle = "#069"
+          ctx.fillText("CANVAS_FINGERPRINT_DEMO", 2, 15)
+          ctx.fillStyle = "rgba(102, 204, 0, 0.7)"
+          ctx.fillText("CANVAS_FINGERPRINT_DEMO", 4, 17)
+          
+          const dataURL = canvas.toDataURL()
+          const fp = dataURL.replace("data:image/png;base64,", "")
+          
+          const writeEl = document.getElementById('canvasFingerprintRes')
+          writeEl.innerHTML = fp
+        }
+    </script>
 </html>
