@@ -8,7 +8,7 @@
     But you're here, without knowing whether I'm a nice guy or not, because you trust that your browser's security measures would protect you.<br>
     Now imagine if I also wrote your browser? And purposefully made it vulnerable to disclosing your private information? And would be able to collect and sell it? Or blackmail you?<br>
     'Funny', you'd think.. But imagine now reading such a thing posted by Google? Hm?<br>
-    Obviously, it is posted by them, away from the public eye, somewhere on the internal papers. Not only posted, but successfully implemented.<br>
+    Obviously, it is posted by them, away from the public eye, somewhere within internal papers. Not only posted, but successfully implemented.<br>
     <br>
     Let's undo their hard work, shall we?<br>
     <br>
@@ -181,7 +181,7 @@
     This requires more friction from the website and tracker devs to implement, but money wins, as per usual.<br>
     <br>
     And who suffers from that? Of course, the user. Did 'privacy' laws like GDPR improve actual user privacy? You can press F12, open cookies tab and see for yourself.<br>
-    They did successfully accomplish, however, making the web even more polluted, with the 'Cookie consent' questions/notifications. Another reason to use things like Brave that block them.<br>
+    They did successfully accomplish, however, making the web even more polluted, with the 'Cookie consent' questions/notifications that waste users' time. Brave blocks those.<br>
 
     <br>
     <p2>Supercookies</p2>
@@ -190,7 +190,7 @@
     
     Normal cookies are kind of annoying when used maliciously, but at the very least they are easy to block or delete.<br>
     Welcome 'Supercookies'. They are not really cookies, just some javascript that writes metadata to the headers/local storage/other different places.<br> 
-    <br> 
+    <br>
 
     Let's look at this example request.
 
@@ -278,7 +278,7 @@
   </pre></code>
 
   <div id='fingerprint'></div>
-  <button style='margin-left:50px;font-size: 30px;' onclick='fingerprintAndShow()'>Fingerprint me!</button>
+  <button style='margin-left:50px;font-size: 30px;' onclick='fingerprintAndShow()'>Fingerprint me!</button><br><br>
 
   This would then be hashed and saved, and used to recognize you every time you visit.<br>
   <br>
@@ -315,6 +315,76 @@
   <br>
   The way this works is we draw random stuff on the canvas, and then save it as an image. An image can be represented as a base64 string.<br>
   Since no machine/setup is the same, this long-ass string will be different (and most probably unique) for every user.<br>
+
+  <br>
+  <br>
+  <p2>Other examples</p2>
+  <br>
+  <br>
+
+  <span style='color:#FFCC66;'>UTM params</span> - things like this:
+
+  <pre><code>
+    https://www.example.com/?utm_source=facebook&utm_medium=social&utm_campaign=summer_sale&utm_term=beach+accessories&utm_content=banner_ad
+  </pre></code>
+
+  Those parameters tell that the user reached the website through a Facebook (utm_source) ad (utm_medium) that was part of the "summer_sale" campaign (utm_campaign),<br>
+  specifically targeting "beach accessories" (utm_term), and the user clicked on a "banner ad" (utm_content).<br>
+  <br>
+  Stuff like this can be also sent in emails, so instead of clicking buttons inside, it's best to copy the source link and clean it.<br>
+  Some websites (like YT) also sneakily add those params with a script every time you ctrl-c the url, so be careful what you send to others.<br>
+
+  <br>
+  <span style='color:#FFCC66;'>Social media plugins</span> - things like disqus.<br>
+  Not much new to say here - you load the script, script sets the cookie, cookie gets sent back home.<br>
+
+  <br>
+  <span style='color:#FFCC66;'>Heatmaps</span> - things like google analytics.<br>
+  Same story, some websites load a script that monitors your cursor's x,y coords and determines where you click and how much.<br>
+  This then gets sent home and compiled into a nice visual heatmap.<br>
+
+  <br>
+  <br>
+  <p2>So how not to be a multibillion-dollar corp's product?</p2>
+  <br>
+  <br>
+
+  1. Don't log in to things. Especially into google services.<br>
+    If you need gmail - use an email client. If you need YT - search for what you need without using recommendations. If google docs - log in with incognito, do your work and leave.<br>
+    Replace malicious services with open-source/reputable ones. Like Protonmail instead of Gmail, Telegram instead of Messenger and NewPipe client instead of the standard YT client.<br>
+  <br>
+
+  2. Minimize social media usage. Don't doomscroll, don't click on ads, comment/like/dislike as little as possible.<br>
+  <br>
+
+  3. Use an open-source browser with good reputation, like Brave or Firefox ESP.<br>
+  <br>
+
+  3. Use Privacy Badger and uBlock Origin. PB recognizes patterns and blocks malicious requests. UBO blocks web garbage, including ads, malicious scripts and tracker loaders.<br>
+  In situations where your privacy is of critical concern - use NoScript.<br>
+  <br>
+
+  4. If you use a popular or downright suspicious website - use a vpn with good reputation like Proton or Mullvad (or create your own on a Linode VPS).<br>
+  Never ever ever use something like NordVPN and friends. If you do - you're owned for good.<br>
+  <br>
+
+  5. Don't use Microsoft Windows. If you do - you're compromised. OSX does collect your data, but there's a much lower chance that the whole world will have access to it.<br>
+    In an ideal world though - use Linux.<br>
+    Freedom/prison situation? Use Tails.<br>
+  <br>
+
+  6. Same goes for mobile devices - Apple products are better than stock Android ones, but an Android device with GrapheneOS or LineageOS is the bulletproof option.<br>
+  Never ever use stock Android.<br>
+  <br>
+
+  7. If you DO HAVE to use compromising products (like stock Android) - choose the ones that call home to a different country than yours. <br>
+  E.g. you live in the US? Buy a Xiaomi that reports back to China. You live in Russia? Buy an iPhone that reports back to the US. You get the point.<br>
+
+  <br>
+  <span style='color:#FFCC66;'>Good luck.</span>
+  <br>
+  <br>
+  <br>
 
 </div>
 
