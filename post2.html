@@ -1,0 +1,49 @@
+<p1>DuckDuckGo is evil</p1>
+<br>
+<br>
+<br>
+<div class='postText'>
+  <a href="https://www.reddit.com/r/PrivacyGuides/comments/tb6cj8/duckduckgo_started_censoring_websites_accused_of/">So there was this drama couple years ago.</a><br>
+  The CEO of the privacy and freedom-friendly search engine turns out to be a dictator who wants to thought-police you. Sussy, but who doesn't have a phase sometimes?<br>
+  <a href="https://www.reddit.com/r/technology/comments/uy5232/duckduckgo_browser_allows_microsoft_trackers_due/">There's also this gem about Microsoft trackers.</a><br>
+  Kind of insane that the company whos main thing is privacy kept its reputation after this, but it is what it is.<br>
+  <br>
+  So today I was casually doing some bug bounty and my vpn lagged out. Happens sometimes. I had Firefox open in Zaproxy and out of laziness went to duckduckgo.com to check if I'm connected.<br>
+  It was boring, I scrolled a bit, and the vpn went live again. And what do you know, my proxy picked up this funny request:<br><br>
+  <img src="assets/1.png" alt="Tracking request 1">
+  <br>
+  So wait, wait a second. It fingerprinted me, tracked my behavior on the website, and send this home? The search engine of the company <a href="https://duckduckgo.com/privacy">that says "WE LITERALLY DON'T TRACK YOU"?</a><br>
+  This gotta be a joke, right?<br>
+  Wrong.<br>
+  It tracks all the movement on the page, including what you type, what links you click, etc.. Which would not be THAT BIG of a deal at all if they didn't purposefully fingerprint you!<br><br>
+  <img src="assets/3.png" alt="Tracking request 2"><br>
+  <img src="assets/4.png" alt="Tracking request 3"><br>
+  <img src="assets/5.png" alt="Tracking request 4"><br>
+  <br>
+  Another interesting thing is that those requests don't show up in the devtools history. I don't know off the top of my head what redirect magic they used to achieve that, but unless you use a proxy you can't see them.<br>
+  So if you wanna test it for yourself and maybe put a bit more effort than me into the research - install Zaproxy, BurpSuite, or even Wireshark and capture what the page sends.<br>
+  <br>
+  Okay, this is pretty bad, but is it enough to call them evil?<br>
+  I think it is, since after me posting a question about this on their subreddit (r/duckduckgo) my post has been removed and my account was banned on the sub.<br>
+  <br>
+  I can't overstate how insanely sad this is. Reputable people stand up against disgusting corporations in the most respectable way possible, by creating something that's better, something that's supposed to avoid making the same mistakes. And where do they end up? Among the ranks of those they tried to overthrow.<br>
+  <br>
+  And if you're gonna be like "But they need to improve the product somehow!", if you're gonna argue in favor of business analytics, and importance of profit margins, and all that shit, I genuinely don't know how to help you.<br>
+  Screw their profit margins. YOU decide what's acceptable. You are a person, not a business. Think like a person, think in favor of yourself. It's only acceptable for them to do this because everybody allows it, not because it's the only way to keep the business runnning.<br>
+  <br>
+  If you desire some sort of conclusion here, it's that nobody should ever, under any circumstance, put their trust in anything that involves money or power.<br>
+  Reputable or not, "non-profit" or not, open source or not, they WILL screw you over in the most subtle, most hilarious way given the slightest opportunity.<br>
+  <br>
+  And if anybody from DDG reads this - email me. I'm genuinely curious to hear the story, or ideally - be proven wrong.<br>
+  <br>
+  <img src="assets/duck.png" alt="DUCK"><br>
+  
+  <br>
+  🙃
+
+<br><br>
+<hr>
+<br>
+</div>
+
+
