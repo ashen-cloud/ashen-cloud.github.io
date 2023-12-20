@@ -50,7 +50,7 @@
             while (true) {
                 try {
                     const res = await fetch(`post${i}.html`)
-                    
+
                     if (!res.ok) break
 
                     const html = await res.text()
@@ -60,9 +60,9 @@
                     blogPosts.appendChild(div)
                     const title = html.split('>')[1].split('<')[0] || 'No title'
                     const navItem = document.createElement("li")
-                    
+
                     navItem.innerHTML = `<a href="#post${i}">${title}</a>`
-                    
+
                     postList.appendChild(navItem)
                     postEls.push(div)
                     tabEls.push(navItem)
@@ -73,6 +73,15 @@
                 } catch (_) {
                     break
                 }
+            }
+
+            if (window.location.href.includes("post")) { // scroll the page down on open when a specific post link is open
+                const loc = window.location.href.split('/').pop()
+                const id = Number(loc[loc.length - 1]) - 1
+                const postEl = postEls[id]
+                const rect = postEl.getBoundingClientRect()
+                const container = document.getElementById('blogPosts')
+                container.scrollBy(0, rect.top)
             }
         }
 
@@ -101,6 +110,7 @@
         }
 
         blogPosts.addEventListener('scroll', highlightTab)
+
     </script>
 
     <script>
